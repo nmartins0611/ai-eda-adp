@@ -1,0 +1,13 @@
+---
+- name: Connecting to Leaf
+  hosts: switches
+  connection: local
+  gather_facts: false
+
+  tasks:
+
+    - name: Correct Interfaces
+      arista.eos.eos_interfaces:
+        config:
+         - name: Ethernet1
+           enabled: true
