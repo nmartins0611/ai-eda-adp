@@ -11,6 +11,7 @@
     - name: backup all switches
       condition: event.payload.text is match("backup")
       action:
-       run_playbook:
-        name: backup_all.yml
+       run_job_template:
+        organization: "Default"
+        name: "Backup Switches"
         post_events: true
