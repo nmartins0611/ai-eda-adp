@@ -23,7 +23,7 @@
        bgp_view: "{{ bgp_summary }}"
        bgp_ping: "{{ result }}"
        status: done
-       bgp_state: "{{ ansible_eda.event.fields.session_state }}"
-       bgp_prob_neighbor: "{{ ansible_eda.event.tags.neighbor_address }}"
+       bgp_state: "{{ ansible_eda.event.body.fields.session_state }}"
+       bgp_prob_neighbor: "{{ ansible_eda.event.body.tags.neighbor_address }}"
        bgp_timestamp: "{{ ansible_eda.event.timestamp }}"
        bgp_error_type: "{{ ansible_eda.event.tags.identifier }}"
