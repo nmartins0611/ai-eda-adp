@@ -15,3 +15,10 @@
         organization: "Default"
         name: "Backup Switches"
         post_events: true
+
+    - name: carlos
+      condition: event.payload.text is search("carlos")
+      action:
+       run_job_template:
+        organization: "Default"
+        name: "Chat Back"
