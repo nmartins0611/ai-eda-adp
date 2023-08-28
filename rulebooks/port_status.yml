@@ -15,3 +15,16 @@
        run_job_template:
         organization: "Default"
         name: "Desired port status"
+
+   - name: BGP change detected
+     condition: event.body.fields.session_state == "IDLE"
+     action:
+       run_playbook:
+        name: bgp_troubleshooting.yml
+        post_events: true
+
+   - name: Trouble shoooting finished
+     condition: event.status == "done"
+     action:
+        run_playbook:
+          name: bgp_status.yml
