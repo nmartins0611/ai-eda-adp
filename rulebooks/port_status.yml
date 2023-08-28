@@ -6,7 +6,7 @@
    - ansible.eda.kafka:
        host: broker
        port: 9092
-       topic: eda-topic
+       topic: network
 
   rules:
    - name: Port is down
