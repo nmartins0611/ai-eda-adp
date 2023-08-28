@@ -8,13 +8,6 @@
 
   rules:
 
-    - name: Update switch ceos2 from webhook
-      condition: event.payload.text is search("ceos2")
-      action:
-       run_playbook:
-        name: backup_ceos2.yml
-        post_events: true
-
     - name: backup all switches
       condition: event.payload.text is match("backup")
       action:
