@@ -1,0 +1,23 @@
+---
+- name: Connecting to Leaf
+  hosts: switch
+  connection: local
+  gather_facts: false
+
+  tasks:
+
+    - name: Download Network Config from Source of Truth
+      ansible.builtin.git:
+       repo: http://gitea:3000/student/leaf.git
+       dest: /tmp/srv
+       clone: yes
+
+    - name: Restoring Configuration of Interfaces
+      include_vars: /tmp/srv/switch_desired_conf.yml
+
+    - name: Merge Configurations
+      arista.eos.eos_l2_interfaces:
+       config: "{{ my_sot }}"
+       state: merged
+
+EOF
