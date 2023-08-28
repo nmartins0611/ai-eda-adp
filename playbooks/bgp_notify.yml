@@ -8,8 +8,8 @@
 
     - name: Send notification message via Mattermost
       community.general.mattermost:
-       url: 
-       api_key: 
+       url: http://containers.ansible-automates.co.za:5000
+       api_key: 1pcz95k4epdumyyyy8tkskqtwh
        attachments:
          - text: "!!!!!! ALERT !!!!!!"
            color: '#ff00dd'
