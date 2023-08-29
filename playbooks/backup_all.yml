@@ -1,5 +1,5 @@
 ---
-- hosts: leaf
+- hosts: switches
   gather_facts: false
   connection: httpapi
   vars:
