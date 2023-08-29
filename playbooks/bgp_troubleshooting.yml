@@ -2,6 +2,7 @@
   hosts: ceos1
   gather_facts: false
   vars:
+    api_token:
     switches:
       - ping 10.0.0.1
       - ping 10.0.0.4
