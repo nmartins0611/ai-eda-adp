@@ -19,13 +19,13 @@
        commands: "{{ switches }}"
       register: result
 
-    - set_fact:
-       cacheable: true
-       bgp_view: "{{ bgp_summary }}"
-       bgp_ping: "{{ result }}"
-       status: done
-       bgp_state: "{{ ansible_eda.event.body.fields.session_state }}"
-       bgp_prob_neighbor: "{{ ansible_eda.event.body.tags.neighbor_address }}"
+  #  - set_fact:
+  #     cacheable: true
+  #     bgp_view: "{{ bgp_summary }}"
+  #     bgp_ping: "{{ result }}"
+  #     status: done
+  #     bgp_state: "{{ ansible_eda.event.body.fields.session_state }}"
+ #      bgp_prob_neighbor: "{{ ansible_eda.event.body.tags.neighbor_address }}"
       
     - name: Send notification message via Mattermost
       community.general.mattermost:
@@ -37,10 +37,10 @@
            title: BGP ERROR
            fields:
             - title: Issue Detected
-              value: "BGP Session: {{ ansible_eda.event.bgp_state }}"
+              value: "BGP Session: {{ ansible_eda.event.body.fields.session_state }}"
               short: true
             - title: Potential Problem
-              value: "Problematic node/path: {{ ansible_eda.event.bgp_prob_neighbor }}"
+              value: "Problematic node/path: {{ ansible_eda.event.body.tags.neighbor_address }}"
               short: true
             - title: Message
               value: "Event detected issue, human intervention is required, Dave"
