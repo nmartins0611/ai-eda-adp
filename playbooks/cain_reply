@@ -1,0 +1,23 @@
+---
+- name: Chat Reply
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  vars:
+    api_token:
+
+  tasks:
+
+    - name: Send notification message via Mattermost
+      community.general.mattermost:
+       url: http://containers.ansible-automates.co.za:8065
+       api_key: "{{ api_token }}"
+       attachments:
+         - text: "Deckard Cain"
+           color: '#ff00dd'
+           title: 
+           fields:
+            - title: 
+              value: "Hello, my friend. Stay awhile and listen..."
+              short: true
+      delegate_to: localhost
