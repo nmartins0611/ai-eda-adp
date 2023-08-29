@@ -16,6 +16,13 @@
         organization: "Default"
         name: "Desired port status"
 
+   - name: Port to be configured
+     condition: event.body.name == "ceos2" and event.body.fields.admin_status == "UP"
+     action:
+       run_job_template:
+        organization: "Default"
+        name: "New port configuration"
+
    - name: BGP change detected
      condition: event.body.fields.session_state == "IDLE"
      action:
