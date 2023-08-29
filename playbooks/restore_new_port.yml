@@ -1,6 +1,6 @@
 ---
 - name: Connecting to Leaf
-  hosts: switch
+  hosts: ceos2
   connection: local
   gather_facts: false
 
@@ -19,5 +19,3 @@
       arista.eos.eos_l2_interfaces:
        config: "{{ my_sot }}"
        state: merged
-
-EOF
