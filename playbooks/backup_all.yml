@@ -15,7 +15,7 @@
 #         filename: "{{ inventory_hostname }}.cfg"
 
 ---
-- hosts: switches
+- hosts: ceos1
   gather_facts: false
   connection: httpapi
   vars:
