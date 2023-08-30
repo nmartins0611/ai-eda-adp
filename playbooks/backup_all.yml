@@ -36,6 +36,11 @@
   
   - name: Create incident
     servicenow.itsm.incident:
+    instance:
+      host: "{{ SN_HOST }""
+      username: "{{ SN_USERNAME }}"
+      password: "{{ SN_PASSWORD }}"
+      
      state: new
      caller: "{{ lookup('env', 'SN_USERNAME') }}"
      short_description: "Chat request logged from: {{ ansible_eda.event.payload.channel_name }}, Trigger: {{ ansible_eda.event.payload.team_domain }}"
