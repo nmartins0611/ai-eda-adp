@@ -46,8 +46,8 @@
      description: "Network configurations have been backed up and uploaded"
      attachments:
       - path: /tmp/"{{ inventory_hostname }}.cfg"
-      #- path: path/to/attachment.txt
-      #- path: path/to/attachment.txt
+        type: text/plain
+        name: ceos1.cfg
      impact: high
      urgency: high
     delegate_to: localhost
