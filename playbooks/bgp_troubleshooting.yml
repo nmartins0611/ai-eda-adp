@@ -29,7 +29,7 @@
       
     - name: Send notification message via Mattermost
       community.general.mattermost:
-       url: http://containers.ansible-automates.co.za:8065
+       url: http://chat.ansible-automates.co.za:8065
        api_key: "{{ api_token }}"
        attachments:
          - text: "!!!!!! ALERT !!!!!!"
