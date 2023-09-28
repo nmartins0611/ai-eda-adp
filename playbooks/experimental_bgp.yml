@@ -1,0 +1,50 @@
+- name: Basic Troubleshooting BGP
+  hosts: ceos1
+  gather_facts: false
+  vars:
+    _url_: https://api.openai.com/v1/completions
+    api_key: 
+    gpt_model: "gpt-3.5-turbo-instruct"
+    gpt_prompt: "What does {{ ansible_eda.event.body.fields.session_state }} mean and give me 1 suggestion to fix it"
+    api_token:
+    switches:
+      - ping 10.0.0.1
+      - ping 10.0.0.4
+
+  tasks:
+
+    - name: BGP Check
+      arista.eos.eos_command:
+       commands: show ip bgp summary vrf all
+      register: bgp_summary
+
+    - name: Check reachability of switches
+      arista.eos.eos_command:
+       commands: "{{ switches }}"
+      register: result
+      
+## AI Enrichment
+
+    - name: Send API request to ChatGPT
+      uri:
+        url: "{{ _url_ }}"
+        method: POST
+        headers: 
+         Content-Type: application/json
+         Authorization: Bearer {{ api_key }}
+        body_format: json
+        body:
+          model: "{{ gpt_model }}"
+          prompt: "{{ gpt_prompt }}"
+          max_tokens: 150  
+      register: api_response
+
+    - name: Extract text from API response
+      set_fact:
+        response_text: "{{ api_response.json.choices[0].text }}"
+
+    - name: Display extracted text
+      debug:
+        var: response_text
+
+## SNOW
