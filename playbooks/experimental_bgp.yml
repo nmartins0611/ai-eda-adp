@@ -5,7 +5,7 @@
     _url_: https://api.openai.com/v1/completions
     api_key: 
     gpt_model: "gpt-3.5-turbo-instruct"
-    gpt_prompt: "What does {{ ansible_eda.event.body.fields.session_state }} mean and give me 1 suggestion to fix it"
+    gpt_prompt: "What does the BGP {{ ansible_eda.event.body.fields }} mean and give me 1 suggestion to fix it"
     api_token:
     switches:
       - ping 10.0.0.1
