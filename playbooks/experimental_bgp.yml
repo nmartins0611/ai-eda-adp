@@ -63,8 +63,8 @@
         password: "{{ SN_PASSWORD }}"
        state: new
        caller: "{{ lookup('env', 'SN_USERNAME') }}"
-       short_description: "TEST"
-       description: "Network configurations have been backed up and uploaded"
+       short_description: "BGP Error"
+       description: "Error Detected - AI Info: {{ response_text }}"
        impact: high
        urgency: high
       delegate_to: localhost
