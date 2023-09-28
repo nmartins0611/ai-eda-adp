@@ -2,6 +2,12 @@
   hosts: ceos1
   gather_facts: false
   vars:
+    ansible_httpapi_port: 443
+    ansible_httpapi_use_ssl: true
+    ansible_httpapi_validate_certs: false
+    SN_HOST: "{{ lookup('env', 'SN_HOST') }}"
+    SN_USERNAME: "{{ lookup('env', 'SN_USERNAME') }}"
+    SN_PASSWORD: "{{ lookup('env', 'SN_PASSWORD') }}"
     _url_: https://api.openai.com/v1/completions
     api_key: 
     gpt_model: "gpt-3.5-turbo-instruct"
@@ -48,3 +54,17 @@
         var: response_text
 
 ## SNOW
+
+    - name: Create incident
+      servicenow.itsm.incident:
+       instance:
+        host: "{{ SN_HOST }}"
+        username: "{{ SN_USERNAME }}"
+        password: "{{ SN_PASSWORD }}"
+       state: new
+       caller: "{{ lookup('env', 'SN_USERNAME') }}"
+       short_description: "TEST"
+       description: "Network configurations have been backed up and uploaded"
+       impact: high
+       urgency: high
+      delegate_to: localhost
