@@ -1,0 +1,18 @@
+---
+- name: Port State Event from Arista
+
+  hosts: all
+  sources:
+   - ansible.eda.kafka:
+       host: containers.ansible-automates.co.za
+       port: 9092
+       topic: network
+
+  rules:
+   - name: BGP change detected
+     condition: event.body.fields.session_state == "IDLE"
+     action:
+       run_job_template:
+        organization: "Default"
+        name: "AI_Enrichment"
+        post_events: true
