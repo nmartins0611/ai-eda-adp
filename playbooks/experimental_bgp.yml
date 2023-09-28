@@ -63,7 +63,7 @@
          password: "{{ SN_PASSWORD }}"
        state: new
        caller: "admin"
-       short_description: "BGP {{ ansible_eda.event.body.fields }} detected"
+       short_description: "BGP {{ ansible_eda.event.body.fields }} detected: AI Info: AI Assessment: {{ response_text | default("") }}"
        description: |-
          BGP Error: BGP Session State: {{ ansible_eda.event.body.fields.session_state | default("") }}
          AI Info: AI Assessment: {{ response_text | default("") }}
