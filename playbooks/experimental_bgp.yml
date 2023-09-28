@@ -64,7 +64,7 @@
        state: new
        caller: "{{ lookup('env', 'SN_USERNAME') }}"
        short_description: "BGP Error"
-       description: "Error Detected - AI Info: {{ response_text }}"
+       description: "Error Detected \n - AI Info:"
        impact: high
        urgency: high
       delegate_to: localhost
