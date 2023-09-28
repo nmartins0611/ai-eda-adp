@@ -64,7 +64,9 @@
        state: new
        caller: "{{ lookup('env', 'SN_USERNAME') }}"
        short_description: "BGP Error"
-       description: "Error Detected \n - AI Info:"
+       description: |-
+        Account id: BGP Session State: {{ ansible_eda.event.body.fields.session_state | default("") }}
+        AI Info: AI Assessment: {{ response_text }}
        impact: high
        urgency: high
       delegate_to: localhost
