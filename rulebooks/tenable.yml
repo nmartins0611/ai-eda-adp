@@ -8,9 +8,10 @@
 
   rules:
 
-    - name: Scan hosts on Tenable
+    - name: backup all switches
       condition: event.payload.event_type is match("new-tenable")
       action:
-        run_template:
+        run_workflow_template:
          name: "SC4 - Tenable Event"
-         organization: "Globo
+         organization: "Globo Financial Service"
+         post_events: true
