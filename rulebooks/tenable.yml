@@ -1,0 +1,16 @@
+---
+- name: Listen for events on a webhook
+  hosts: all
+  sources:
+    - ansible.eda.webhook:
+        host: 0.0.0.0
+        port: 5000
+
+  rules:
+
+    - name: Scan hosts on Tenable
+      condition: event.payload.event_type is match("new-tenable")
+      action:
+        run_template:
+         name: "SC4 - Tenable Event"
+         organization: "Globo
