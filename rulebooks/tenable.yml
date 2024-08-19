@@ -8,7 +8,7 @@
 
   rules:
 
-    - name: backup all switches
+    - name: Tenable Advisory
       condition: event.payload.event_type is match("new-tenable")
       action:
         run_workflow_template:
