@@ -8,7 +8,7 @@
 
   rules:
 
-    - name: backup all switches
+    - name: Vulnerability Advisory
       condition: event.payload.event_type is match("new-recommendation")
       action:
         run_workflow_template:
