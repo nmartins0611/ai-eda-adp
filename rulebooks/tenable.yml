@@ -11,7 +11,7 @@
     - name: Tenable Advisory
       condition: event.payload.event_type is match("new-tenable")
       action:
-        run_template:
+        run_job_template:
          name: "SC4 - Tenable Event"
          organization: "Globo Financial Service"
          post_events: true
