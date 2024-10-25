@@ -9,7 +9,7 @@
   rules:
 
     - name: Tenable Advisory
-      condition: event.payload.data.event is match("created")
+      condition: event.payload.event is match("created")
       action:
         run_job_template:
           organization: "Default"
