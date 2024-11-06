@@ -11,7 +11,7 @@
   rules:
    - name: http config issue
      condition:  
-     all:
+      all:
        - event.body.syslog.facility == "3"
        - event.body.journald.unit is match("httpd.service")
        - event.body.message is match("Failed to start The Apache HTTP Server.")
