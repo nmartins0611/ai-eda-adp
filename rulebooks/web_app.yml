@@ -10,11 +10,7 @@
 
   rules:
    - name: http config issue
-     condition:  
-      all:
-       - event.body.syslog.facility == "3"
-       - event.body.journald.unit is match("httpd.service")
-       - event.body.message is match("Failed to start The Apache HTTP Server.")
+     condition:  event.body.syslog.facility == "3" and event.body.journald.unit is match("httpd.service") and event.body.message is match("Failed to start The Apache HTTP Server.")
      action:
        run_job_template:
         organization: "Default"
