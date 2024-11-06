@@ -20,6 +20,8 @@
         path: /etc/httpd/conf/httpd.conf
         regexp: '^InvalidDirectiveHere$'  # Matches the line exactly
         state: absent
+      tags:
+        - always
       notify:
         - restart apache
 
