@@ -10,7 +10,6 @@
         line: 'InvalidDirectiveHere'
         state: present
       tags:
-        - never
         - break
       notify:
         - restart apache
@@ -21,7 +20,7 @@
         regexp: '^InvalidDirectiveHere$'  # Matches the line exactly
         state: absent
       tags:
-        - always
+        - restore
       notify:
         - restart apache
 
