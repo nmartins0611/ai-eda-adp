@@ -10,10 +10,10 @@
 
   rules:
    - name: http config issue
-     condition:         
-     all:
-       - event.body.syslog.facility is match("3")
-       - event.body.message is match("Failed to start The Apache HTTP Server.")
+     condition: event.body.message is match("Failed to start The Apache HTTP Server.")      
+     # all:
+     #   - event.body.syslog.facility is match("3")
+     #   - event.body.message is match("Failed to start The Apache HTTP Server.")
       
      action:
        run_job_template:
