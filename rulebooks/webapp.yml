@@ -1,0 +1,19 @@
+---
+- name: Web app issue
+
+  hosts: all
+  sources:
+   - ansible.eda.kafka:
+       host: rhel01-nostromo.demoredhat.com
+       port: 9092
+       topic: network
+
+  rules:
+   - name: http config issue
+     condition:         
+      event.payload.syslog.facility is match("3")
+      
+     action:
+       run_job_template:
+        organization: "Default"
+        name: "Desired port status"
