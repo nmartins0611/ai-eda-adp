@@ -8,24 +8,17 @@
 
   rules:
 
-    - name: backup all switches
-      condition: event.payload.text is match("backup")
-      action:
-       run_job_template:
-        organization: "Default"
-        name: "Backup Switches"
-        post_events: true
+    # - name: backup all switches
+    #   condition: event.payload.text is match("backup")
+    #   action:
+    #    run_job_template:
+    #     organization: "Default"
+    #     name: "Backup Switches"
+    #     post_events: true
 
-    - name: carlos
-      condition: event.payload.text is search("carlos")
+    - name: demo
+      condition: event.payload.text is search("demo")
       action:
        run_job_template:
         organization: "Default"
-        name: "Chat Reply"
-
-    - name: cain
-      condition: event.payload.text is search("cain")
-      action:
-       run_job_template:
-        organization: "Default"
-        name: "Cain Reply"
+        name: "Demo Job Template"
