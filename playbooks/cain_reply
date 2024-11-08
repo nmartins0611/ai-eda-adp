@@ -10,7 +10,7 @@
 
     - name: Send notification message via Mattermost
       community.general.mattermost:
-       url: http://containers.ansible-automates.co.za:8065
+       url: http://44.209.231.244:8065
        api_key: "{{ api_token }}"
        attachments:
          - text: "Deckard Cain"
