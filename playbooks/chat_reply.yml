@@ -10,7 +10,7 @@
 
     - name: Send notification message via Mattermost
       community.general.mattermost:
-       url: http://http://44.209.231.244:8065/
+       url: http://http://44.209.231.244:8065
        api_key: "{{ api_token }}"
        attachments:
          - text: "!!!!!! ALERT !!!!!!"
